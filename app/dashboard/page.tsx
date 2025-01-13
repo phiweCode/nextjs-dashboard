@@ -2,12 +2,13 @@ import { Card } from '@/app/ui/dashboard/cards';
 import RevenueChart from '@/app/ui/dashboard/revenue-chart';  
 import LatestInvoices from '../ui/dashboard/latest-invoices';
 import { lusitana } from '../ui/fonts'; 
-import { fetchRevenue } from '../lib/data';
+import { fetchRevenue, fetchLatestInvoices } from '../lib/data';
 
 
 const Page = async () => {  
 
-    const revenue = await fetchRevenue()
+    const revenue = await fetchRevenue() 
+    const latestInvoices = await fetchLatestInvoices()
 
     return  ( 
         <main> 
@@ -28,7 +29,7 @@ const Page = async () => {
 
             <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4">
                   <RevenueChart revenue={revenue}  />
-                  {/* <LatestInvoices latestInvoices={latestInvoices} /> */}
+                  <LatestInvoices latestInvoices={latestInvoices} />
             </div>
         </main>
     )
